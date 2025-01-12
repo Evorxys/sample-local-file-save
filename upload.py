@@ -41,14 +41,14 @@ def upload_file():
     try:
         with open(file_path, 'rb') as f:
             response = requests.post(
-                f"https://{LOCAL_SERVER_IP}:{LOCAL_SERVER_PORT}/receive",  # Use https here
+                f"https://{LOCAL_SERVER_IP}:{LOCAL_SERVER_PORT}/receive",
                 files={'file': f},
                 headers={'Authorization': f'Bearer {SECURE_KEY}'}
             )
         if response.status_code == 200:
             return jsonify({'message': 'File uploaded successfully'}), 200
         else:
-            return jsonify({'error': 'Failed to forward file'}), 500
+            return jsonify({'error': f'Failed to forward file: {response.status_code}, {response.text}'}), 500
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
