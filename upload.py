@@ -41,7 +41,7 @@ def upload_file():
     try:
         with open(file_path, 'rb') as f:
             response = requests.post(
-                f"http://{LOCAL_SERVER_IP}:{LOCAL_SERVER_PORT}/receive",
+                f"https://{LOCAL_SERVER_IP}:{LOCAL_SERVER_PORT}/receive",  # Use https here
                 files={'file': f},
                 headers={'Authorization': f'Bearer {SECURE_KEY}'}
             )
