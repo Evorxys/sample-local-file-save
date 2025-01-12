@@ -39,6 +39,7 @@ def upload_file():
 
     # Forward file to local server or cloud storage
     try:
+        print(f"Sending request with SECURE_KEY: {SECURE_KEY}")  # Debug print statement
         with open(file_path, 'rb') as f:
             response = requests.post(
                 f"https://{LOCAL_SERVER_IP}:{LOCAL_SERVER_PORT}/receive",
