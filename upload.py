@@ -3,15 +3,16 @@ import requests
 import os
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
 
-app = Flask(__name__, template_folder='../templates', static_folder='../static')
+app = Flask(__name__, template_folder='templates', static_folder='static')
 
 # Temporary folder for uploaded files
 UPLOAD_FOLDER = os.path.join(app.root_path, 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# Load environment variables
+# Environment variables
 LOCAL_SERVER_IP = os.getenv('LOCAL_SERVER_IP')
 LOCAL_SERVER_PORT = os.getenv('LOCAL_SERVER_PORT')
 SECURE_KEY = os.getenv('SECURE_KEY')
